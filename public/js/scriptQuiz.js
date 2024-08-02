@@ -31,14 +31,16 @@ function checkMultiChoice(event) {
         button.parentElement.querySelector('.feedback').innerHTML = 'Incorrect: Correct answer is '+ correctButton.innerHTML +'!';
     }
 
-    divElement = findParentByClass(button, 'custom-text-block');
+    divElement = findParentByClass(button, 'custom-text-block-Quiz');
     if (divElement) {
         divElement.querySelector('#result').innerHTML = counter + ' out of ' + divElement.querySelectorAll('.section').length + ' right';
-    }
-    // check if all questions are answered right, if yes blink the result
-    if (counter == divElement.querySelectorAll('.section').length) {
-        document.getElementById('result').innerHTML = 'You know me well!';
-        document.getElementById('result').style.fontSize = '1.5em';
-        document.getElementById('result').classList.add('blinking-text');
+        
+        // check if all questions are answered right, if yes blink the result
+        if (counter == divElement.querySelectorAll('.section').length) {
+        res = document.getElementById('result');
+        res.innerHTML = 'Wow, all correct!';
+        res.style.fontSize = '1.5em';
+        res.classList.add('blinking-text');
+        }
     }
 }
